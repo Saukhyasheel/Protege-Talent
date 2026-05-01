@@ -75,11 +75,14 @@
       border-bottom: 1px solid rgba(191, 160, 106, 0.15);
     }
     .nav-logo {
-      font-family: var(--font-body);
-      font-size: 1rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--white); text-decoration: none;
+      display: flex; align-items: center;
+      background: #F5F0E8;
+      border-radius: 8px;
+      padding: 4px 12px 4px 6px;
+      text-decoration: none;
+      transition: opacity 0.2s;
     }
+    .nav-logo:hover { opacity: 0.88; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 36px; }
     .nav-links a {
@@ -675,6 +678,19 @@
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .founding-benefits { padding: 0; }
     }
+    /* ─── LOGO IMAGE ─── */
+    .logo-img {
+      height: 56px; width: auto;
+      display: block;
+      border-radius: 6px;
+      background: transparent;
+      transition: opacity 0.2s;
+    }
+    .logo-img:hover { opacity: 0.85; }
+    .footer-logo-img {
+      height: 80px; width: auto; display: block;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -688,6 +704,7 @@
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
     <span class="mobile-close" id="mobile-close">✕</span>
+    <img src="logo.jpeg" alt="Protege Talent" style="height:72px; width:auto; border-radius:8px; background:#F5F0E8; padding:4px 8px; margin-bottom:8px;" />
     <a href="#how-it-works" class="mobile-link">How It Works</a>
     <a href="#who-we-serve" class="mobile-link">Who We Serve</a>
     <a href="#why-us" class="mobile-link">Why Us</a>
@@ -696,7 +713,9 @@
 
   <!-- NAVIGATION -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">PROTEGE <span>TALENT</span></a>
+    <a href="#" class="nav-logo">
+      <img src="logo.jpeg" alt="Protege Talent" class="logo-img" />
+    </a>
     <div class="nav-links">
       <a href="#how-it-works">How It Works</a>
       <a href="#who-we-serve">Who We Serve</a>
@@ -982,7 +1001,9 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#" class="nav-logo">PROTEGE <span>TALENT</span></a>
+          <a href="#" style="display:inline-flex; align-items:center; background:#F5F0E8; border-radius:8px; padding:5px 12px 5px 8px; text-decoration:none;">
+            <img src="logo.jpeg" alt="Protege Talent" class="footer-logo-img" />
+          </a>
           <p class="footer-tagline">Built For Founders Who Don't Settle.</p>
         </div>
         <div class="footer-links">
