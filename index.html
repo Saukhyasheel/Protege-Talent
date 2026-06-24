@@ -230,6 +230,10 @@
     .f-note{text-align:center;margin-top:20px;font-size:.85rem;color:var(--muted);font-style:italic}
     .f-success{display:none;text-align:center;padding:36px;background:rgba(196,169,107,.06);border-radius:14px;border:1.5px solid rgba(196,169,107,.25);margin-top:24px}
     .f-success p{color:var(--text);font-size:1rem}
+    .f-error{display:none;text-align:center;padding:24px;background:rgba(180,40,40,.05);border-radius:14px;border:1.5px solid rgba(180,40,40,.25);margin-top:24px}
+    .f-error p{color:#8a2a2a;font-size:.95rem}
+    .f-error a{color:#8a2a2a;font-weight:600}
+    .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
     /* FOOTER */
     footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.05);padding:64px 48px 36px}
@@ -284,7 +288,7 @@
 
 <!-- COOKIE -->
 <div id="cookie-banner">
-  <p>We use cookies to enhance your experience. See our <a href="#contact">Privacy Policy</a>.</p>
+  <p>We use cookies to enhance your experience. See our <a href="privacy.html">Privacy &amp; Cookie Policy</a>.</p>
   <button id="cookie-accept">Accept</button>
 </div>
 
@@ -445,7 +449,7 @@
   <div class="found-wrap">
     <span class="s-label" style="color:var(--gold)">Founding Client Offer</span>
     <h2 class="s-title light" style="margin-bottom:24px">Become a Founding Client.</h2>
-    <p class="found-sub">We are taking on a small number of early client partnerships at a reduced placement fee while we build our first group of long-term relationships. For our first 10 clients, we are offering:</p>
+    <p class="found-sub">We are taking on a small number of early client partnerships at a reduced placement fee while we build our first group of long-term relationships. For the next 10 clients, we are offering:</p>
     <div class="found-benefits">
       <div class="found-benefit"><div class="b-check">✓</div><p><strong>10% placement fee</strong></p></div>
       <div class="found-benefit"><div class="b-check">✓</div><p><strong>Founder-led support</strong></p></div>
@@ -464,9 +468,15 @@
     <h2 class="s-title reveal">Let's Find Your Next Great Hire.</h2>
     <p class="reveal" style="font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.85">No commitment. Just a conversation.</p>
     <p class="reveal" style="font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.85;margin-top:10px">Tell us what role you are hiring for and we will let you know whether we can help.</p>
+    <div class="calendly-inline-widget reveal" data-url="https://calendly.com/robertboughtflower-protegetalent/30min?hide_gdpr_banner=1&background_color=ffffff&primary_color=c4a96b" style="min-width:320px;height:680px;border-radius:24px;overflow:hidden;box-shadow:0 12px 64px rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.05);margin-top:52px"></div>
     <div class="form-box reveal">
-      <div class="cal-note"><p>📅 <strong>Prefer to book directly?</strong> Our Calendly booking link will be added here shortly.</p></div>
-      <form id="contact-form" novalidate>
+      <div class="cal-note"><p>✉️ <strong>Prefer to send a message?</strong> Fill in the form below and we'll get back to you within 24 hours.</p></div>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Web3Forms: replace the access_key value with your key from https://web3forms.com (use hello@protegetalent.co.uk) -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY"/>
+        <input type="hidden" name="subject" value="New enquiry from the Protégé Talent website"/>
+        <input type="hidden" name="from_name" value="Protégé Talent Website"/>
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off"/>
         <div class="f-grid">
           <div class="f-group"><label>Full Name *</label><input type="text" name="name" placeholder="Jane Smith" required/></div>
           <div class="f-group"><label>Company Name *</label><input type="text" name="company" placeholder="Acme SaaS Ltd" required/></div>
@@ -477,6 +487,7 @@
         <div class="f-submit"><button type="submit" class="btn-submit">Book My Call →</button></div>
       </form>
       <div class="f-success" id="f-success"><p>✅ <strong>Thanks — we'll be in touch within 24 hours.</strong></p></div>
+      <div class="f-error" id="f-error"><p>⚠️ Something went wrong. Please email us directly at <a href="mailto:hello@protegetalent.co.uk">hello@protegetalent.co.uk</a>.</p></div>
       <p class="f-note">We typically respond within 24 hours. No spam, ever.</p>
     </div>
   </div>
@@ -504,7 +515,7 @@
     </div>
     <div class="ft-bottom">
       <p>© 2026 Protégé Talent. All rights reserved.</p>
-      <div class="ft-legal"><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
+      <div class="ft-legal"><a href="privacy.html">Privacy &amp; Cookie Policy</a><a href="#">Terms & Conditions</a></div>
     </div>
   </div>
 </footer>
@@ -640,11 +651,29 @@ const ban=document.getElementById('cookie-banner');
 if(localStorage.getItem('ck'))ban.classList.add('hidden');
 document.getElementById('cookie-accept').addEventListener('click',()=>{localStorage.setItem('ck','1');ban.classList.add('hidden')});
 
-/* FORM */
-document.getElementById('contact-form').addEventListener('submit',e=>{
+/* FORM (Web3Forms AJAX) */
+const cForm=document.getElementById('contact-form');
+cForm.addEventListener('submit',async e=>{
   e.preventDefault();
-  document.getElementById('contact-form').style.display='none';
-  document.getElementById('f-success').style.display='block';
+  const btn=cForm.querySelector('.btn-submit');
+  const err=document.getElementById('f-error');
+  err.style.display='none';
+  btn.disabled=true;btn.textContent='Sending…';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(cForm)
+    });
+    const data=await res.json();
+    if(data.success){
+      cForm.style.display='none';
+      document.getElementById('f-success').style.display='block';
+    }else{throw new Error(data.message||'submit failed');}
+  }catch(_){
+    err.style.display='block';
+    btn.disabled=false;btn.textContent='Book My Call →';
+  }
 });
 
 /* SMOOTH ANCHORS */
@@ -655,5 +684,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+
+<!-- CALENDLY -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
