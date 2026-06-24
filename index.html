@@ -840,7 +840,7 @@ try {
     orb2.position.y = -2 + Math.sin(t*0.3) * 0.8;
 
     composer.render();
-    if (!reduce) requestAnimationFrame(frame);
+    requestAnimationFrame(frame);
   }
   frame();
 } catch (err) {
