@@ -147,6 +147,21 @@
     .diff-card:hover{box-shadow:0 28px 64px rgba(0,0,0,.1);border-color:rgba(196,169,107,.38)}
     .diff-icon{width:58px;height:58px;background:linear-gradient(135deg,rgba(196,169,107,.14),rgba(196,169,107,.04));border:1px solid rgba(196,169,107,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;font-size:1.55rem;transition:transform .35s var(--ease)}
     .diff-card:hover .diff-icon{transform:translateY(-5px) scale(1.06)}
+    .diff-icon svg{width:30px;height:30px;color:var(--gold);overflow:visible}
+    .ic-draw{stroke-dasharray:var(--dl,70)}
+    .diff-card:hover .ic-draw{animation:icDraw .8s var(--ease) both}
+    @keyframes icDraw{from{stroke-dashoffset:var(--dl,70)}to{stroke-dashoffset:0}}
+    .gr-head{transition:transform .4s var(--ease)}
+    .diff-card:hover .gr-head{transform:translate(1.5px,-1.5px)}
+    .md-grp{transition:transform .55s var(--ease);transform-origin:center}
+    .diff-card:hover .md-grp{transform:rotate(-10deg)}
+    .md-star{transform-box:fill-box;transform-origin:center}
+    .diff-card:hover .md-star{animation:icTwinkle .7s var(--ease)}
+    @keyframes icTwinkle{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+    .cb-dots circle{opacity:0;transition:opacity .25s var(--ease)}
+    .diff-card:hover .cb-dots circle{opacity:1}
+    .diff-card:hover .cb-dots circle:nth-child(2){transition-delay:.12s}
+    .diff-card:hover .cb-dots circle:nth-child(3){transition-delay:.24s}
     .diff-card h4{font-family:var(--fh);font-size:1.6rem;font-weight:600;color:var(--text);margin-bottom:12px;font-style:italic}
     .diff-card p{font-size:.95rem;line-height:1.82;color:var(--muted);font-weight:300}
 
@@ -418,10 +433,10 @@
   <div class="why-wrap">
     <div class="why-top"><span class="s-label">Why Protégé Talent</span><h2 class="s-title">We do things differently.</h2></div>
     <div class="diff-grid">
-      <div class="diff-card tilt-card" data-d="0"><div class="tilt-inner"><div class="diff-icon">💎</div><h4>Fewer, better candidates</h4><p>You receive a focused shortlist of candidates who have been screened before introduction.</p></div></div>
-      <div class="diff-card tilt-card" data-d="120"><div class="tilt-inner"><div class="diff-icon">🚀</div><h4>Built for sales and GTM hiring</h4><p>We focus on the roles that drive growth: sales, business development, account management, customer success, and revenue operations.</p></div></div>
-      <div class="diff-card tilt-card" data-d="240"><div class="tilt-inner"><div class="diff-icon">⭐</div><h4>Character matters</h4><p>We look beyond the CV. Ambition, communication, reliability, and drive matter, especially in early-stage teams.</p></div></div>
-      <div class="diff-card tilt-card" data-d="360"><div class="tilt-inner"><div class="diff-icon">🤝</div><h4>Founder-friendly process</h4><p>Clear communication, fast feedback, and no unnecessary complexity. You stay focused on building the business while we handle the search.</p></div></div>
+      <div class="diff-card tilt-card" data-d="0"><div class="tilt-inner"><div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="--dl:74"><polygon class="ic-draw" points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div><h4>Fewer, better candidates</h4><p>You receive a focused shortlist of candidates who have been screened before introduction.</p></div></div>
+      <div class="diff-card tilt-card" data-d="120"><div class="tilt-inner"><div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="--dl:44"><polyline class="ic-draw" points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline class="gr-head" points="17 6 23 6 23 12"/></svg></div><h4>Built for sales and GTM hiring</h4><p>We focus on the roles that drive growth: sales, business development, account management, customer success, and revenue operations.</p></div></div>
+      <div class="diff-card tilt-card" data-d="240"><div class="tilt-inner"><div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="--dl:46"><g class="md-grp"><circle class="ic-draw" cx="12" cy="9" r="6.5"/><path d="M8.5 14.4 L7 22 L12 19 L17 22 L15.5 14.4"/><path class="md-star" d="M12 5.6l.95 1.92 2.12.31-1.53 1.5.36 2.11L12 10.45l-1.9 1 .36-2.11-1.53-1.5 2.12-.31z" fill="currentColor" stroke="none"/></g></svg></div><h4>Character matters</h4><p>We look beyond the CV. Ambition, communication, reliability, and drive matter, especially in early-stage teams.</p></div></div>
+      <div class="diff-card tilt-card" data-d="360"><div class="tilt-inner"><div class="diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="--dl:64"><path class="ic-draw" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><g class="cb-dots" fill="currentColor" stroke="none"><circle cx="8.5" cy="10" r="1"/><circle cx="12" cy="10" r="1"/><circle cx="15.5" cy="10" r="1"/></g></svg></div><h4>Founder-friendly process</h4><p>Clear communication, fast feedback, and no unnecessary complexity. You stay focused on building the business while we handle the search.</p></div></div>
     </div>
   </div>
 </section>
