@@ -165,6 +165,36 @@
     .step-body{font-size:.84rem;line-height:1.72;color:rgba(255,255,255,.48);padding:0 14px;font-weight:300}
     .proc-cta{text-align:center}
     .proc-cta p{color:rgba(255,255,255,.52);margin-bottom:30px;font-size:1rem;font-weight:300}
+    .proc-sub{max-width:620px;margin:0 auto 64px;text-align:center;color:rgba(255,255,255,.5);font-weight:300;font-size:1.02rem;line-height:1.8}
+    .step-tag{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,169,107,.4);border-radius:100px;padding:4px 12px;margin-bottom:12px}
+
+    /* CONSULTATION */
+    #consultation{background:var(--navy);position:relative;overflow:hidden}
+    #consultation::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 78% 30%,rgba(196,169,107,.08) 0%,transparent 58%);pointer-events:none}
+    .consult-wrap{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start;position:relative;z-index:1}
+    #consultation .s-label{color:var(--gold)}
+    .consult-text .s-title{margin-bottom:28px;font-size:clamp(2.2rem,4vw,3.4rem)}
+    .consult-intro{color:rgba(255,255,255,.58);font-weight:300;font-size:1.05rem;line-height:1.9;margin-bottom:44px}
+    .consult-intro strong{color:var(--white);font-weight:500}
+    .consult-list{list-style:none;display:flex;flex-direction:column;gap:26px}
+    .consult-list li{display:flex;gap:20px;align-items:flex-start}
+    .cl-num{font-family:var(--fh);font-style:italic;font-size:1.2rem;color:var(--gold);min-width:28px;padding-top:2px}
+    .consult-list h4{font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:6px;letter-spacing:.01em}
+    .consult-list p{font-size:.95rem;line-height:1.7;color:rgba(255,255,255,.5);font-weight:300}
+    .consult-card{position:sticky;top:110px;background:linear-gradient(155deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(196,169,107,.18);border-radius:18px;padding:34px 32px;box-shadow:0 28px 70px rgba(0,0,0,.4)}
+    .brief-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:30px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .brief-head h3{font-family:var(--fh);font-style:italic;font-weight:600;font-size:1.5rem;color:var(--white);margin-bottom:8px}
+    .brief-meta{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(196,169,107,.6)}
+    .brief-badge{flex-shrink:0;width:36px;height:36px;border:1px solid rgba(196,169,107,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-style:italic;color:var(--gold);font-size:1.05rem}
+    .brief-field{margin-bottom:20px}
+    .bf-label{display:block;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(196,169,107,.65);margin-bottom:6px}
+    .brief-field p{font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.72);font-weight:300}
+    .brief-foot{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-family:var(--fh);font-style:italic;font-size:.92rem;color:rgba(255,255,255,.45)}
+    .brief-foot span{color:var(--gold)}
+    @media(max-width:860px){
+      .consult-wrap{grid-template-columns:1fr;gap:40px}
+      .consult-card{position:static}
+    }
 
     /* WHO WE SERVE */
     #who-we-serve{background:var(--off-white)}
@@ -300,7 +330,8 @@
 <div class="mobile-menu" id="mobile-menu">
   <span class="mobile-close" id="mobile-close">✕</span>
   <img src="logo.jpeg" alt="Protégé Talent" style="height:64px;mix-blend-mode:screen;filter:brightness(1.15);margin-bottom:16px"/>
-  <a href="#how-it-works" class="mobile-link">How It Works</a>
+  <a href="#consultation" class="mobile-link">Consultation</a>
+  <a href="#how-it-works" class="mobile-link">Process</a>
   <a href="#who-we-serve" class="mobile-link">Who We Serve</a>
   <a href="#why-us" class="mobile-link">Why Us</a>
   <a href="#contact" class="btn-mob mobile-link">Book a Call</a>
@@ -313,7 +344,8 @@
     <img src="logo.jpeg" alt="Protégé Talent" class="logo-fallback"/>
   </a>
   <div class="nav-links">
-    <a href="#how-it-works">How It Works</a>
+    <a href="#consultation">Consultation</a>
+    <a href="#how-it-works">Process</a>
     <a href="#who-we-serve">Who We Serve</a>
     <a href="#why-us">Why Us</a>
     <a href="#contact" class="btn-nav">Book a Call</a>
@@ -337,7 +369,7 @@
       <a href="#contact" class="btn-primary magnetic"><span>Book a Discovery Call</span></a>
       <a href="#how-it-works" class="btn-ghost magnetic">See How It Works</a>
     </div>
-    <p class="hero-note">No pressure. Just a short conversation about the role, your standards, and whether we can help.</p>
+    <p class="hero-note">No pressure to start. A real conversation about the role, your standards, and whether we can help.</p>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
@@ -391,16 +423,46 @@
   </div>
 </section>
 
+<!-- CONSULTATION -->
+<section id="consultation">
+  <div class="consult-wrap">
+    <div class="consult-text">
+      <span class="s-label reveal">— The Consultation</span>
+      <h2 class="s-title light reveal">We don't start searching until we know <span class="gold-text">exactly</span> who you're looking for.</h2>
+      <p class="consult-intro reveal">Most searches fail in the brief, not the search. Before we approach a single candidate, we sit down with you properly — <strong>not a ten-minute intake call</strong>. We build a precise picture of the role, your standard, and the person who will actually succeed in your team. That brief becomes the benchmark every candidate is measured against. It is the reason a shortlist of three is enough.</p>
+      <ol class="consult-list">
+        <li class="reveal"><span class="cl-num">i.</span><div><h4>The role behind the role</h4><p>What this hire actually needs to achieve in their first year — the outcome, not the job title.</p></div></li>
+        <li class="reveal"><span class="cl-num">ii.</span><div><h4>Your standard</h4><p>The bar a person has to clear to belong on your team. We calibrate to it before we search, not after.</p></div></li>
+        <li class="reveal"><span class="cl-num">iii.</span><div><h4>Fit, assessed honestly</h4><p>Who thrives in your environment and who quietly won't — character, motivation, and the way someone works.</p></div></li>
+        <li class="reveal"><span class="cl-num">iv.</span><div><h4>Commercial context</h4><p>Your market, your sales motion, and the real pressure this person is being hired into.</p></div></li>
+      </ol>
+    </div>
+    <aside class="consult-card reveal">
+      <div class="brief-head">
+        <div><h3>The Search Brief</h3><span class="brief-meta">Built in your consultation · Confidential</span></div>
+        <span class="brief-badge">P</span>
+      </div>
+      <div class="brief-field"><span class="bf-label">Role</span><p>Founding commercial hire</p></div>
+      <div class="brief-field"><span class="bf-label">Success in 12 months</span><p>Owns the pipeline end to end and builds the motion that scales after them.</p></div>
+      <div class="brief-field"><span class="bf-label">The standard</span><p>Coachable, relentless, raises the bar for everyone around them.</p></div>
+      <div class="brief-field"><span class="bf-label">Cultural fit</span><p>Comfortable with ambiguity; thrives without a playbook handed to them.</p></div>
+      <div class="brief-field"><span class="bf-label">Commercial mandate</span><p>Early-stage GTM — first revenue, founder-led to repeatable.</p></div>
+      <p class="brief-foot">Every candidate we introduce is measured against this. <span>— No exceptions.</span></p>
+    </aside>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section id="how-it-works">
   <div class="proc-wrap">
     <span class="s-label">The Process</span>
-    <h2 class="s-title light" style="margin-bottom:72px">Simple. Straightforward. Effective.</h2>
+    <h2 class="s-title light" style="margin-bottom:22px">Simple to start. <span class="gold-text">Rigorous</span> once we begin.</h2>
+    <p class="proc-sub">Booking a call takes a minute. What follows is the disciplined part — and it's where the difference is made.</p>
     <div class="proc-steps">
       <div class="proc-line"><div class="proc-line-fill" id="proc-fill"></div></div>
-      <div class="proc-step" data-sd="0"><div class="step-node">1</div><div class="step-ttl">Tell us what you need</div><div class="step-body">In a short call, we understand the role, your company, your standards, and the type of person who will succeed in your team.</div></div>
-      <div class="proc-step" data-sd="150"><div class="step-node">2</div><div class="step-ttl">We search and screen</div><div class="step-body">We source candidates, speak with them, and assess fit before anyone is introduced.</div></div>
-      <div class="proc-step" data-sd="300"><div class="step-node">3</div><div class="step-ttl">You meet a focused shortlist</div><div class="step-body">You receive up to 3 relevant candidates who are prepared, suitable, and worth your time.</div></div>
+      <div class="proc-step" data-sd="0"><div class="step-node">1</div><span class="step-tag">Where it starts</span><div class="step-ttl">The Consultation</div><div class="step-body">A structured discovery session, not a quick call. We map the role, your standard, and the person who will succeed — and turn it into a precise brief.</div></div>
+      <div class="proc-step" data-sd="150"><div class="step-node">2</div><div class="step-ttl">We search and screen</div><div class="step-body">We source candidates, speak with them, and assess fit, motivation, and character before anyone reaches your inbox.</div></div>
+      <div class="proc-step" data-sd="300"><div class="step-node">3</div><div class="step-ttl">You meet a focused shortlist</div><div class="step-body">Up to three candidates, each measured against your brief — prepared, suitable, and worth your time.</div></div>
     </div>
     <div class="proc-cta"><p>Ready to find your next great hire?</p><a href="#contact" class="btn-primary magnetic"><span>Book a Discovery Call</span></a></div>
   </div>
@@ -473,7 +535,7 @@
   <div class="contact-wrap">
     <span class="s-label reveal">Let's Talk</span>
     <h2 class="s-title reveal">Let's Find Your Next Great Hire.</h2>
-    <p class="reveal" style="font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.85">No commitment. Just a conversation.</p>
+    <p class="reveal" style="font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.85">No commitment to start. Real rigour once we do.</p>
     <p class="reveal" style="font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.85;margin-top:10px">Tell us what role you are hiring for and we will let you know whether we can help.</p>
     <div class="calendly-inline-widget reveal" data-url="https://calendly.com/robertboughtflower-protegetalent/30min?hide_gdpr_banner=1&background_color=ffffff&primary_color=c4a96b" style="min-width:320px;height:680px;border-radius:24px;overflow:hidden;box-shadow:0 12px 64px rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.05);margin-top:52px"></div>
     <div class="form-box reveal">
